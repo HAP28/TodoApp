@@ -1,0 +1,68 @@
+<%- include('./static/header') %>
+<section class="add-todo">
+  <form action="./api/todos" method="post">
+    <div class="abs">
+      <div class="row">
+        <input
+          type="text"
+          name="title"
+          placeholder="take a note..."
+          autocomplete="off"
+        />
+        <button type="submit">+</button>
+      </div>
+      <textarea
+        placeholder="Description..."
+        name="description"
+        rows="5"
+      ></textarea>
+    </div>
+  </form>
+
+  <div class="notes">
+    <% if(todos.length === 0){ %>
+    <div>No todos to display</div>
+    <% } else{ todos.forEach(e => { %>
+    <form action="api/delete/<%=e.todo_id%>" method="GET">
+      <div class="note" onclick="clickedDiv('<%=e.todo_id%>')">
+        <div class="topLine">
+          <h2><%= e.todo_title %></h2>
+          <button type="submit"><i class="fas fa-trash-alt"></i></button>
+        </div>
+        <p><%= e.todo_description %></p>
+        <small><%= e.todo_date %></small>
+      </div>
+    </form>
+    <div id="myModal-<%= e.todo_id %>" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close" id="close-<%= e.todo_id %>" onclick="closemodal('<%= e.todo_id %>')">&times;</span>
+        <form action="/api/update/<%=e.todo_id%>" method="post">
+          <input type="text" value="<%= e.todo_title %>" name="title"/>
+          <textarea
+            placeholder="Description..."
+            name="description"
+            rows="5"
+          ><%= e.todo_description %></textarea>
+
+          <button type="submit">Update</button>
+        </form>
+      </div>
+    </div>
+    <% })} %>
+  </div>
+</section>
+
+<script>
+  function closemodal(id){
+    document.getElementById("myModal-" + id).style.display = "none";
+  }
+  let textarea = document.querySelector(".abs textarea");
+  let textbox = document.querySelector(".row input");
+  textbox.onfocus = () => {
+    textarea.style.display = "block";
+  };
+  
+</script>
+<script src="js/index.js"></script>
+<%- include('./static/footer') %>
