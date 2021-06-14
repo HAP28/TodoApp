@@ -4,7 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
     <!-- Font Awesome -->
     <script
       src="https://kit.fontawesome.com/c342cbd44b.js"
@@ -16,8 +21,12 @@
   </head>
   <body>
     <header>
-        <h1>Amaze Keep</h1>
-        <div class="profile">
-            <i class="far fa-user-circle"></i> <h3>User</h3>
-        </div>
+      <h1>Amaze Keep</h1>
+      <div class="profile">
+        <% if(title === "Amaze - TODO"){ %>
+        <i class="far fa-user-circle"></i>
+        <h3><%= user[0]['full_name'] %></h3>
+        <a class="btn btn-danger" id="logout" onclick="logout()">Logout</a>
+        <% } %>
+      </div>
     </header>

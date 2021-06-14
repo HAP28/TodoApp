@@ -101,7 +101,7 @@ header h1 {
   color: rgb(124, 115, 115);
   text-transform: capitalize;
 }
-.abs textarea{
+.abs textarea {
   display: none;
 }
 .notes {
@@ -141,6 +141,9 @@ header h1 {
   cursor: pointer;
   background-color: transparent;
 }
+.topLine h2 {
+  text-transform: capitalize;
+}
 /* footer */
 footer {
   display: flex;
@@ -150,7 +153,7 @@ footer {
   bottom: 0;
   padding: 40px;
   width: 100%;
-  margin-top: 8rem;
+  margin-top: 2rem;
 }
 footer p {
   font-weight: 900;
@@ -168,8 +171,8 @@ footer p {
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 /* Modal Content/Box */
@@ -194,4 +197,53 @@ footer p {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+.btn {
+  margin: 3px 10px;
+  background-color: white;
+  color: black;
+  text-decoration: none;
+}
+.btn:hover {
+  background-color: #eeeeee;
+  color: black;
+  font-weight: 900;
+}
+
+.profile i {
+  margin-top: 8px;
+}
+.profile h3 {
+  margin-top: 8px;
+}
+
+/* login page */
+.login{
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  height: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.form-design{
+  width: 85%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form-design form{
+  width: 100%;
+  padding: 20px;
+}
+.form-input{
+  width: 100%;
+  padding: 10px;
+}
+.form-input input{
+  height: 30px;
+  width: 100%;
 }

@@ -1,0 +1,54 @@
+<%- include('./static/header') %>
+<section class="login">
+  <h1>Create An Account</h1>
+  <div class="form-design">
+    <form action="/auth/signin" method="POST">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Full Name</label>
+        <input
+          type="text"
+          name="full_name"
+          class="form-control"
+          id="exampleInputEmail1"
+          placeholder="Full Name"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input
+          type="email"
+          name="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          placeholder="email"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input
+          type="password"
+          name="password"
+          class="form-control"
+          id="exampleInputPassword1"
+          placeholder="Password"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label"
+          >Confirm Password</label
+        >
+        <input
+          type="password"
+          class="form-control"
+          id="exampleInputPassword1"
+          placeholder="Confirm Password"
+        />
+      </div>
+
+      <button type="submit" class="btn btn-primary">Register</button>
+      <div>Already have an account? <a href="/" class="btn btn-info">Login Here</a></div>
+    </form>
+    
+  </div>
+</section>
+<%- include('./static/footer') %>
