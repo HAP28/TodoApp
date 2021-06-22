@@ -5,37 +5,70 @@
     <h1>Login Here</h1>
   </div>
   <div class="form-design">
-    <form action="/auth/login" method="POST">
+    <form action="/auth/login" method="POST" name="loginForm">
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Email address</label>
         <input
           type="email"
           class="form-control"
-          id="exampleInputEmail1"
+          id="email"
           aria-describedby="emailHelp"
           name="email"
         />
+      </div>
+      <div class="error" id="email-error">
+        <h4>This field is requied*</h4>
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Password</label>
         <input
           type="password"
           class="form-control"
-          id="exampleInputPassword1"
+          id="password"
           name="password"
         />
       </div>
+      <div class="error" id="password-error">
+        <h4>This field is requied*</h4>
+        <h4>Password must be greater than 8 character*</h4>
+        <h4>
+          Password must contains aa Upper case letter, Lower case letter,
+          Special Character*
+        </h4>
+      </div>
 
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary" id="login">Login</button>
       <label for="sign up">New to Amaze Keep? Create an account here!</label>
       <button class="btn btn-warning" id="signup">Sign Up</button>
     </form>
   </div>
+  <% if(error) {%>
+  <div><%= error %></div>
+  <% } %>
 </section>
 <%- include('./static/footer') %>
 <script>
-  document.getElementById('signup').addEventListener("click",(e) => {
+  document.getElementById("login").addEventListener("click", (e) => {
     e.preventDefault();
-    window.location.href = '/register'
+    let email = document.getElementById("email");
+    let pass = document.getElementById("password");
+    let email_error = document.getElementById("email-error");
+    let pass_error = document.getElementById("password-error");
+    let error = false;
+    if (email.value == "") {
+      email_error.style.display = "block";
+      error = true;
+    }
+    if (pass.value == "") {
+      pass_error.style.display = "block";
+      error = true;
+    }
+    if(email.value != "" && pass.value != "") document.loginForm.submit();
+    if(error) return false;
+    else document.loginForm.submit();
+  });
+  document.getElementById("signup").addEventListener("click", (e) => {
+    e.preventDefault();
+    window.location.href = "/register";
   });
 </script>

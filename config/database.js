@@ -11,5 +11,5 @@ pool.on("connect", () => {
 });
 
 module.exports = {
-  query: (text, params) => pool.query(text, params),
+  query: (text, params) => pool.query(text, params)  // created a property "query" which replaces pool.query
 };

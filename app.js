@@ -20,11 +20,11 @@ app.use("/auth/", authRoute);
 require("dotenv/config");
 
 app.get("/", (req,res) => {
-  res.render('login', {title: "Login"});
+  res.render('login', {title: "Login",error: req.query.error});
 });
 
 app.get("/register", (req,res) => {
-  res.render('register', {title: "Registration"});
+  res.render('register', {title: "Registration", error: req.query.error});
 });
 
 app.get("/home", async (req, res) => {

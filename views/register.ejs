@@ -2,37 +2,54 @@
 <section class="login">
   <h1>Create An Account</h1>
   <div class="form-design">
-    <form action="/auth/signin" method="POST">
+    <form action="/auth/signin" method="POST" name="registerForm">
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Full Name</label>
         <input
           type="text"
           name="full_name"
           class="form-control"
-          id="exampleInputEmail1"
+          id="fname"
           placeholder="Full Name"
         />
       </div>
+      <div class="error" id="fname-error">
+        <h4>This field is requied*</h4>
+      </div>
+
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Email address</label>
         <input
           type="email"
           name="email"
           class="form-control"
-          id="exampleInputEmail1"
+          id="email"
           placeholder="email"
         />
       </div>
+      <div class="error" id="email-error">
+        <h4>This field is requied*</h4>
+      </div>
+
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Password</label>
         <input
           type="password"
           name="password"
           class="form-control"
-          id="exampleInputPassword1"
+          id="password"
           placeholder="Password"
         />
       </div>
+      <div class="error" id="password-error">
+        <h4>This field is requied*</h4>
+        <h4>Password must be greater than 8 character*</h4>
+        <h4>
+          Password must contains aa Upper case letter, Lower case letter,
+          Special Character*
+        </h4>
+      </div>
+
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label"
           >Confirm Password</label
@@ -40,15 +57,65 @@
         <input
           type="password"
           class="form-control"
-          id="exampleInputPassword1"
+          id="cpassword"
           placeholder="Confirm Password"
         />
       </div>
+      <div class="error" id="cpassword-error">
+        <h4>Password doesn't match*</h4>
+      </div>
+      <div class="error" id="cpassword-error-required">
+        <h4>This field is required*</h4>
+      </div>
 
-      <button type="submit" class="btn btn-primary">Register</button>
+      <button type="submit" class="btn btn-primary" id="register">Register</button>
       <div>Already have an account? <a href="/" class="btn btn-info">Login Here</a></div>
     </form>
     
   </div>
+  <% if(error) {%>
+    <div>
+      <%= error %> 
+    </div> 
+  <% } %> 
 </section>
+<script>
+  document.getElementById("register").addEventListener("click", (e) => {
+    e.preventDefault();
+    let fname = document.getElementById("fname");
+    let email = document.getElementById("email");
+    let pass = document.getElementById("password");
+    let cpass = document.getElementById("cpassword");
+    let fname_error = document.getElementById("fname-error");
+    let email_error = document.getElementById("email-error");
+    let pass_error = document.getElementById("password-error");
+    let cpass_error_r = document.getElementById("cpassword-error-required");
+    let cpass_error = document.getElementById("cpassword-error");
+    let error = false;
+    if (email.value == "") {
+      email_error.style.display = "block";
+      error = true;
+    }
+    if (pass.value == "") {
+      pass_error.style.display = "block";
+      error = true;
+    }
+    if (cpass.value == "") {
+      cpass_error_r.style.display = "block";
+      error = true;
+    }
+    if (fname.value == "") {
+      fname_error.style.display = "block";
+      error = true;
+    }
+    if(pass.value !== cpass.value){
+      cpass_error.style.display = "block";
+      error = true;
+    }
+
+    // if(email.value != "" && pass.value != "") document.registerForm.submit();
+    if(error) return false;
+    else document.registerForm.submit();
+  });
+</script>
 <%- include('./static/footer') %>

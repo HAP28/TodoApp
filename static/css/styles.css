@@ -219,7 +219,7 @@ footer p {
 }
 
 /* login page */
-.login{
+.login {
   display: flex;
   flex-direction: column;
   padding: 30px;
@@ -229,21 +229,31 @@ footer p {
   justify-content: center;
   margin-top: 1rem;
 }
-.form-design{
+.form-design {
   width: 85%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.form-design form{
+.form-design form {
   width: 100%;
   padding: 20px;
 }
-.form-input{
+.form-input {
   width: 100%;
   padding: 10px;
 }
-.form-input input{
+.form-input input {
   height: 30px;
   width: 100%;
+}
+
+.error {
+  display: none;
+}
+
+.error h4 {
+  font-size: 12px;
+  color: red;
+  letter-spacing: 1px;
 }

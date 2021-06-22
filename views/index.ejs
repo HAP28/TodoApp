@@ -30,6 +30,7 @@
   makeRequest();
 </script>
 
+<% if(user[0]['is_verified']){ %> 
 <section class="add-todo">
   <form action="./api/todos" onsubmit="return validation()" method="post">
     <div class="abs">
@@ -94,7 +95,7 @@
             rows="5"
             id="descriptionUpdate<%= e.todo_id %>"
           >
-<%= e.todo_description %></textarea
+          <%= e.todo_description %></textarea
           >
           <input type="hidden" name="user_id" value=<%= user[0]['user_id'] %>>
           <input type="hidden" name="token" value=<%= token %>>
@@ -105,6 +106,12 @@
     <% })} %>
   </div>
 </section>
+<% } else{ %>
+<section class="add-todo">
+<h1>Your email is not verified.</h1>
+<p>Please Check your email to Verify your account</p>
+</section>
+<% } %> 
 
 <script>
   function closemodal(id) {
